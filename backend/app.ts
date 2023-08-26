@@ -7,6 +7,7 @@ import cors from 'cors';
 
 import config from './config.json';
 import { getCarbonFootprint } from './src/carbon_footprint'
+import sustainabilityRouter from './src/sustainability'
 
 var app = express();
 const PORT: number = parseInt(process.env.PORT || config.port);
@@ -15,6 +16,8 @@ const HOST: string = process.env.IP || 'localhost';
 app.use(logger('dev'));
 app.use(express.json());
 app.use(cors());
+
+app.use('/api/sustainability', sustainabilityRouter);
 
 app.get('/', (req, res) => {
   res.send({ data: 'you\'re at root!' })
