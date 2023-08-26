@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+import cors from 'cors';
 
 import config from './config.json';
 import { getCarbonFootprint } from './src/carbon_footprint'
@@ -13,6 +14,7 @@ const HOST: string = process.env.IP || 'localhost';
 
 app.use(logger('dev'));
 app.use(express.json());
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.send({ data: 'you\'re at root!' })
