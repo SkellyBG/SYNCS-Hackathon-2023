@@ -34,9 +34,9 @@ function SustainabilityNumber({ country }: { country: string }) {
         <p>Loading...</p>
       ) : sustainabilityNumber === undefined ? (
         <p> Not a valid city! </p>
-      ) :
-        (<p>Sustainability Number for {country}: {sustainabilityNumber}</p>
-        )}
+      ) : (
+        <p>Sustainability Number for {country}: {sustainabilityNumber}</p>
+      )}
     </div>
   );
 }
