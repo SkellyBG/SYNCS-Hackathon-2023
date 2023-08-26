@@ -8,6 +8,7 @@ import cors from 'cors';
 import config from './config.json';
 import { getCarbonFootprint } from './src/carbon_footprint'
 import sustainabilityRouter from './src/sustainability'
+import cities from './gdsi-cities.json'
 
 var app = express();
 const PORT: number = parseInt(process.env.PORT || config.port);
@@ -18,6 +19,14 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/api/sustainability', sustainabilityRouter);
+
+// app.get('/api/sustainability/:name', (req, res) => {
+//   const name = req.params.name;
+//   if (cities[name as keyof typeof cities] === undefined) {
+//     res.json({ "overall-index": null })
+//   }
+//   res.json(cities[name as keyof typeof cities]);
+// })
 
 app.get('/', (req, res) => {
   res.send({ data: 'you\'re at root!' })
